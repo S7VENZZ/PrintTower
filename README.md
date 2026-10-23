@@ -20,7 +20,7 @@
 
 PrintTower zeigt alle deine 3D-Drucker in **einer** Oberfläche: Status, Fortschritt, Restzeit, Temperaturen und Kamerabild. Du steuerst sie von dort, schickst Druckdateien hin und lässt PrintTower entscheiden, welcher freie Drucker sie bekommt.
 
-Alles läuft **auf deiner eigenen Hardware** (Windows-PC, Raspberry Pi, Mac oder Linux-Rechner). Es gibt keinen Cloud-Dienst, kein Konto bei uns und keine Messdaten. Bedient wird PrintTower mit der **PrintTower-App** (Windows, Android).
+Alles läuft **auf deiner eigenen Hardware** (Windows-PC, Raspberry Pi, Mac oder Linux-Rechner). Es gibt keinen Cloud-Dienst, kein Konto bei uns und keine Messdaten. Bedient wird PrintTower mit der **PrintTower-App** (Windows, Mac, Linux, Android).
 
 ---
 
@@ -96,7 +96,8 @@ Tägliche **automatische Sicherung** (ab Werk um 03:00, die letzten 2 bleiben �
 
 - **Warteschlange:** Dateien einreihen, PrintTower verteilt sie an den nächsten freien, passenden Drucker. Serien-Druck und Mehrplatten-3MF.
 - **KI-Fehlererkennung:** erkennt Spaghetti im Kamerabild und pausiert den Druck.
-- **Meldungen:** Alarmzentrale für alles, was auf der Farm passiert.
+- **Meldungen:** Alarmzentrale für alles, was auf der Farm passiert. In der **Android-App** kommen sie auch als Benachrichtigung aufs Handy (Druck fertig, Fehler …), ohne Google und ohne fremden Server.
+- **Speicher aufräumen:** alte Dateien nach einstellbarer Zeit automatisch löschen (ab Werk aus, Ordner bleiben tabu, die Statistik bleibt).
 - **Anmeldung mit Rollen:** Administrator, Bediener, Betrachter; Zugriff je Drucker oder Raum; optional Zwei-Faktor.
 - **Verschlüsselt:** HTTPS mit eigener Zertifizierungsstelle, ohne Let's Encrypt und ohne Cloud.
 - **Virtueller Drucker:** direkt aus dem Slicer (OrcaSlicer, Bambu Studio) drucken.
@@ -124,7 +125,7 @@ PrintTower besteht aus zwei Teilen:
 | Teil | Aufgabe | Wo |
 |---|---|---|
 | **Server** | läuft rund um die Uhr, überwacht die Drucker, speichert Dateien | Windows-PC, Raspberry Pi, Mac oder Linux |
-| **App** | zum Bedienen, zeigt den Server an | Windows, Android |
+| **App** | zum Bedienen, zeigt den Server an | Windows, macOS, Linux, Android |
 
 Die App findet den Server im selben Netzwerk von selbst.
 
@@ -148,27 +149,43 @@ Das Skript installiert Node.js (falls nötig), lädt den **signierten** Server, 
 
 Auf einem Mac geht der Befehl genauso (ohne `sudo` läuft der Server als Dienst deines Benutzers).
 
+Die **App** (Windows, Mac, Linux oder Android) findet den Server dann im Netzwerk von selbst.
+
 ### Windows als reiner Server (ohne App)
 
 ```powershell
 irm https://github.com/S7VENZZ/PrintTower/releases/latest/download/install.ps1 | iex
 ```
 
+### Mac (macOS)
+
+1. Auf der [Download-Seite](https://github.com/S7VENZZ/PrintTower/releases/latest) die passende Datei laden: **`PrintTower-Setup-<Version>-mac-arm64.dmg`** für Macs mit Apple-Chip (M1 bis M4), **`…-mac-x64.dmg`** für ältere Macs mit Intel.
+2. Öffnen und PrintTower in den Ordner „Programme“ ziehen.
+3. Die App ist nicht signiert, macOS blockiert sie deshalb beim ersten Start: **Rechtsklick auf PrintTower → „Öffnen“ → „Öffnen“**. Meldet macOS „beschädigt“, im Terminal einmal `xattr -cr /Applications/PrintTower.app` ausführen.
+4. Beim Start Administrator-Konto anlegen, oder (wenn dein Server schon auf einem Pi läuft) **„Mit einem anderen Server verbinden“**.
+
+### Linux (Desktop)
+
+- **AppImage:** `PrintTower-Setup-<Version>-linux-x86_64.AppImage` laden, ausführbar machen (`chmod +x …`) und starten.
+- **Debian/Ubuntu:** `PrintTower-Setup-<Version>-linux-amd64.deb` laden und mit `sudo apt install ./PrintTower-Setup-<Version>-linux-amd64.deb` installieren.
+
+(Für Raspberry-Pi-Desktops mit ARM-Prozessor gibt es die App noch nicht; dort läuft der Server, und bedient wird er von Windows, Mac, Linux-PC oder Android.)
+
 ### Android
 
 1. Öffne in der App **System → Fernzugriff → „PrintTower aufs Handy“**, wähle **Android** und scanne den QR-Code mit der Handy-Kamera – oder lade [**`PrintTower-android.apk`**](https://github.com/S7VENZZ/PrintTower/releases/latest/download/PrintTower-android.apk) direkt.
 2. Öffnen und die Installation erlauben („Apps aus dieser Quelle“).
-3. In der App die Adresse deines Servers eintragen (steht in derselben Karte).
+3. In der App die Adresse deines Servers eintragen (steht in derselben Karte). Die App fragt einmal nach der Erlaubnis für Benachrichtigungen: damit kommen **Meldungen** (Druck fertig, Fehler …) auch bei geschlossener App aufs Handy.
 
-### iPhone, Mac-App, Linux-App
+### iPhone
 
-Diese Apps gibt es **noch nicht** zum Herunterladen: Sie lassen sich nur auf einem Mac bzw. Linux-Rechner bauen (und fürs iPhone braucht es ein Apple-Entwicklerkonto). Das Projekt ist vorbereitet. Den **Server** kannst du auf Mac und Linux schon heute betreiben (siehe oben).
+Die iPhone-App gibt es **noch nicht**: Sie lässt sich nur auf einem Mac bauen und braucht ein Apple-Entwicklerkonto für den App Store. Das Projekt ist vorbereitet.
 
 ---
 
 ## Updates
 
-In der App unter **System → Programm**: **„Nach Updates suchen“** prüft **App und Server** zusammen. Gibt es Neues, aktualisierst du beides mit **„Alles aktualisieren“** oder einzeln. Updates sind **signiert** (Ed25519) und werden vor der Installation geprüft; kommt der Server nach einem Update nicht hoch, geht er von selbst auf die alte Version zurück. Deine Daten bleiben dabei erhalten.
+In der App unter **System → Programm**: **„Nach Updates suchen“** prüft **App und Server** zusammen. Gibt es Neues, aktualisierst du beides mit **„Alles aktualisieren“** oder einzeln. (Die App aktualisiert sich selbst unter Windows; auf Mac und Linux zeigt sie die neue Version an, die du dann von der Download-Seite lädst.) Updates sind **signiert** (Ed25519) und werden vor der Installation geprüft; kommt der Server nach einem Update nicht hoch, geht er von selbst auf die alte Version zurück. Deine Daten bleiben dabei erhalten.
 
 ## Datenschutz und Sicherheit
 
@@ -187,4 +204,4 @@ Der Wert steht in der Datei `printtower-update.json` desselben Releases.
 
 ---
 
-Dieses Repository enthält die **fertigen Programme** (Installer, Server-Paket, Android-App) und die signierten Update-Beschreibungen. Fragen oder Fehler? Bitte als [Issue](https://github.com/S7VENZZ/PrintTower/issues) melden.
+Dieses Repository enthält die **fertigen Programme** (Installer für Windows, Mac und Linux, Server-Paket, Android-App) und die signierten Update-Beschreibungen. Fragen oder Fehler? Bitte als [Issue](https://github.com/S7VENZZ/PrintTower/issues) melden.
