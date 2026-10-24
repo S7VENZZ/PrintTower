@@ -172,6 +172,7 @@ Auf dem Handy sieht PrintTower anders aus als am PC: **Navigation unten**, Druck
 | **Bambu Lab** | X1, P1, A1 | LAN-Modus (nicht die Bambu Cloud) |
 | **Prusa** | MK4 / MK4S, MK3.9, MINI, XL, Core One | PrusaLink |
 | **OctoPrint** | alle mit OctoPrint, auch Prusa MK3 am Raspberry Pi | OctoPrint-Schnittstelle |
+| **Elegoo** *(experimentell)* | Centauri Carbon und andere mit SDCP 3.0 | SDCP im lokalen Netz, noch nicht an echter Hardware geprüft |
 
 Nicht unterstützt: Prusa Connect und die Bambu Cloud (beides Cloud-Dienste, das widerspricht dem lokalen Ansatz).
 
