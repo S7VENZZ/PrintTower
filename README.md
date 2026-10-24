@@ -4,7 +4,7 @@
 
 **Alle deine 3D-Drucker an einem Ort – ohne Cloud, ohne Konto, ohne Telemetrie.**
 
-Überwachen · Steuern · Aufträge automatisch verteilen · Dateien auf dem Server · 3D-Vorschau
+Überwachen · Steuern · Aufträge automatisch verteilen · Wartung · Auswertung · Dateien auf dem Server · 3D-Vorschau
 
 [**⬇ Herunterladen**](https://github.com/S7VENZZ/PrintTower/releases/latest) &nbsp;·&nbsp; [Installation](#installation) &nbsp;·&nbsp; [Funktionen](#was-printtower-kann) &nbsp;·&nbsp; [Unterstützte Drucker](#unterstützte-drucker)
 
@@ -57,6 +57,15 @@ Lade G-Code und 3MF **einmal** auf den Server und drucke sie später von jedem G
 <tr>
 <td width="46%" valign="top">
 
+### 🗂️ Dateien auch auf dem Drucker
+Neben der Bibliothek des Servers („Global“) siehst du, was **auf dem Drucker selbst** liegt: suchen, von dort drucken oder löschen. Für Klipper- und OctoPrint-Drucker.
+
+</td>
+<td width="54%"><img src="docs/images/dateien-drucker.png" alt="Dateien auf dem Drucker"></td>
+</tr>
+<tr>
+<td width="46%" valign="top">
+
 ### 🔍 Vor dem Drucken in 3D ansehen
 Jede abgelegte Datei lässt sich als 3D-Ansicht öffnen: drehen, zoomen, den Aufbau Schicht für Schicht abspielen. So siehst du vorher, was herauskommt.
 
@@ -71,6 +80,42 @@ Was ist in welchem Drucker eingelegt, wie viel ist noch drauf, welche Spulen lie
 
 </td>
 <td width="54%"><img src="docs/images/filament.png" alt="Filament"></td>
+</tr>
+<tr>
+<td width="46%" valign="top">
+
+### 🛠️ Wartung, die nichts vergisst
+Aufgaben je Drucker nach **Druckstunden oder Tagen**, mit Kategorien, Logbuch (auch eigene Einträge, wer es gemacht hat, wie lange) und eigenen Vorlagen. Ein Drucker **in Wartung** bekommt keine neuen Aufträge, bis du ihn freigibst.
+
+</td>
+<td width="54%"><img src="docs/images/wartung.png" alt="Wartung"></td>
+</tr>
+<tr>
+<td width="46%" valign="top">
+
+### 📊 Auswertung mit Note
+Acht Ansichten: Übersicht, **Scorecard** (Note von 0 bis 100 und Rangliste der Drucker), **Kosten** (Material, Strom, Arbeit je Auftrag), Kapazität, Qualität, Wartung, Alarme und Energie.
+
+</td>
+<td width="54%"><img src="docs/images/analytik.png" alt="Analytik"></td>
+</tr>
+<tr>
+<td width="46%" valign="top">
+
+### 🩺 Zustand des Servers
+Prozessor, Speicher und Datenträger, die Farm, Warteschlange, Lager, Datenbank und Netzwerk auf einer Seite; dazu Protokolle zum Durchsuchen und **Berichte** zum Drucken oder Speichern.
+
+</td>
+<td width="54%"><img src="docs/images/vitalwerte.png" alt="Vitalwerte"></td>
+</tr>
+<tr>
+<td width="46%" valign="top">
+
+### 🖥️ Tafel für die Werkstatt
+Ein **Bildschirmschoner** zeigt nach einstellbarer Zeit die ganze Farm als große Tafel: Uhr, Kennzahlen und jeder Drucker mit Fortschritt. Dazu eigene Akzentfarbe, Name und Logo, Region und Währung.
+
+</td>
+<td width="54%"><img src="docs/images/bildschirmschoner.png" alt="Bildschirmschoner"></td>
 </tr>
 <tr>
 <td width="46%" valign="top">
@@ -92,11 +137,25 @@ Tägliche **automatische Sicherung** (ab Werk um 03:00, die letzten 2 bleiben �
 </tr>
 </table>
 
+### Für das Handy gebaut
+
+Auf dem Handy sieht PrintTower anders aus als am PC: **Navigation unten**, Druckerkarten als Zeilen, die Steuerung in Abschnitten, Aufträge als Karten mit Pfeilen zum Umsortieren. Gilt in der Android-App und in jedem schmalen Fenster.
+
+<p>
+<img src="docs/images/handy-monitor.png" alt="Handy: Monitor" width="250">
+&nbsp;
+<img src="docs/images/handy-auftraege.png" alt="Handy: Aufträge" width="250">
+&nbsp;
+<img src="docs/images/handy-dateien.png" alt="Handy: Dateien" width="250">
+</p>
+
 ### Außerdem
 
 - **Warteschlange:** Dateien einreihen, PrintTower verteilt sie an den nächsten freien, passenden Drucker. Serien-Druck und Mehrplatten-3MF.
 - **KI-Fehlererkennung:** erkennt Spaghetti im Kamerabild und pausiert den Druck.
-- **Meldungen:** Alarmzentrale für alles, was auf der Farm passiert. In der **Android-App** kommen sie auch als Benachrichtigung aufs Handy (Druck fertig, Fehler …), ohne Google und ohne fremden Server.
+- **Bestellungen:** Aufträge von Kunden (von Hand, aus Etsy- oder Shopify-Tabellen oder aus dem Shop) werden über die Artikelnummer zu Druckaufträgen; fertig gedruckte lassen sich mit Versanddienst und Sendungsnummer als versendet vermerken.
+- **Filament-Bibliothek:** Marken und Filamente als eigene Vorlage für neue Spulen; Preis je Kilo an der Spule für Kosten und Lagerwert.
+- **Meldungen:** Alarmzentrale für alles, was auf der Farm passiert, mit Reitern nach Art, Filter nach Drucker und wählbaren **Tönen**. In der **Android-App** kommen sie auch als Benachrichtigung aufs Handy (Druck fertig, Fehler …), ohne Google und ohne fremden Server.
 - **Speicher aufräumen:** alte Dateien nach einstellbarer Zeit automatisch löschen (ab Werk aus, Ordner bleiben tabu, die Statistik bleibt).
 - **Anmeldung mit Rollen:** Administrator, Bediener, Betrachter; Zugriff je Drucker oder Raum; optional Zwei-Faktor.
 - **Verschlüsselt:** HTTPS mit eigener Zertifizierungsstelle, ohne Let's Encrypt und ohne Cloud.
