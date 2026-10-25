@@ -103,7 +103,7 @@ Acht Ansichten: Übersicht, **Scorecard** (Note von 0 bis 100 und Rangliste der 
 <td width="46%" valign="top">
 
 ### 🩺 Zustand des Servers
-Prozessor, Speicher und Datenträger, die Farm, Warteschlange, Lager, Datenbank und Netzwerk auf einer Seite; dazu Protokolle zum Durchsuchen und **Berichte** zum Drucken oder Speichern.
+Prozessor, Speicher und Datenträger, die Farm, Warteschlange, Lager, Datenbank und Netzwerk auf einer Seite. Dazu die **Verbindung jedes Druckers**: Erreichbarkeit der letzten 24 Stunden, Verbindungsabbrüche, Antwortzeit und die letzten Wechsel mit dem Fehlertext, damit ein schwaches WLAN auffällt, bevor ein Druck daran scheitert. Außerdem Protokolle zum Durchsuchen und **Berichte** zum Drucken oder Speichern.
 
 </td>
 <td width="54%"><img src="docs/images/vitalwerte.png" alt="Vitalwerte"></td>
@@ -121,7 +121,7 @@ Ein **Bildschirmschoner** zeigt nach einstellbarer Zeit die ganze Farm als groß
 <td width="46%" valign="top">
 
 ### ⚙️ Einfach einrichten
-Drucker im Netzwerk **automatisch finden lassen**, Räume anlegen, Slicer verbinden. Alles auf einer Seite.
+Die Konfiguration ist eine **Übersicht aus Karten**: Drucker, Druckermodelle, Steckdosen, Bildschirmschoner, Design, Region, Räume, Benachrichtigungen, Benutzer und Updates. Jede Karte zeigt Kennzahlen und öffnet ihre Einstellungen. Drucker im Netzwerk **automatisch finden lassen**, Slicer verbinden; mit Suche, Zoom und Karten, die du per Ziehen ordnest.
 
 </td>
 <td width="54%"><img src="docs/images/konfiguration.png" alt="Konfiguration"></td>
